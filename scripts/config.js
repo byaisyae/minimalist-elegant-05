@@ -110,7 +110,7 @@ const C = {
       U("1565038930214-09566ed2149b", 1200, 750),
     ],
   },
-  music: "sound/Calum-Scott-You-Are-The-Reason-Official-Video.mp3", // lagu latar: taruh file mp3 di folder sound/
+  music: "sound/golden hour.mp3", // lagu latar: taruh file mp3 di folder sound/
   // alamat pengiriman kado (kosongkan {} jika tidak dipakai)
   giftAddress: {
     name: "Nadia",
@@ -120,7 +120,10 @@ const C = {
   gifts: [{ bank: "BCA", no: "1234567890", name: "Nadia Safira Rahma" }],
   // galeri: disarankan 6 foto portrait agar ringan (tampil sebagai slider + thumbnail)
   // video prewedding di atas foto galeri: tempel link YouTube atau ID videonya (kosongkan "" jika tidak ada)
-  video: { url: "https://www.youtube.com/watch?v=QMForPSc-Mc", title: "Video Prewedding" },
+  video: {
+    url: "https://www.youtube.com/watch?v=QMForPSc-Mc",
+    title: "Video Prewedding",
+  },
   gallery: [
     U("1607357910286-1ff94ac13c24", 800, 1100),
     U("1596457221755-b96bc3a6df18", 800, 1100),
