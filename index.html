@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#7a1f2b" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <!-- ====== UBAH PER PESANAN: judul, deskripsi, url & gambar pratinjau link (dibaca WhatsApp/medsos, tidak bisa dari config.js) ====== -->
+    <title>The Wedding of Nadia &amp; Raka</title>
+    <meta property="og:title" content="The Wedding of Nadia &amp; Raka" />
+    <meta
+      property="og:description"
+      content="Kami mengundang Anda untuk hadir di hari bahagia kami. Sabtu, 12 Desember 2026."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://example.com/wedding-nadia-raka/"
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1646325311277-0c35409fdd57?auto=format&amp;fit=crop&amp;q=75&amp;w=1200&amp;h=630"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="scripts/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  </head>
+  <body class="lock bg-cream-100 text-ink-700 font-sans antialiased overflow-x-hidden">
+    <section
+      id="cover"
+      class="fixed inset-0 z-[60] flex flex-col justify-end text-center px-6 pb-[14vh] overflow-hidden bg-ac-dark"
+    >
+      <div id="cvbg" class="absolute inset-0 bg kb"></div>
+      <!-- gradasi taupe di bagian bawah foto agar teks putih terbaca -->
+      <div
+        class="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-ac/95 via-ac/60 to-transparent pointer-events-none"
+      ></div>
+      <div class="relative">
+        <p class="font-sans uppercase tracking-[.3em] text-[11px] sm:text-xs text-white">
+          THE WEDDING OF
+        </p>
+        <h1
+          data-names
+          class="font-serif font-normal text-5xl sm:text-6xl text-white my-4"
+        ></h1>
+        <p class="font-sans tracking-[.12em] text-[11px] text-white/80">
+          Kepada Yth. Bapak/Ibu/Saudara/i
+        </p>
+        <p id="guest" class="font-sans tracking-[.15em] text-base text-white mt-1"></p>
+        <button
+          id="openBtn"
+          class="mt-6 px-7 py-2.5 rounded-md bg-ac text-white font-medium hover:bg-ac-dark hover:scale-105 transition"
+        >
+          Buka Undangan
+        </button>
+      </div>
+    </section>
+
+    <div
+      id="pg"
+      class="hidden fixed top-0 h-1 bg-ac z-[65]"
+      style="transform: scaleX(0)"
+    ></div>
+    <aside
+      id="side"
+      class="hidden lg:block fixed inset-y-0 left-0 z-0 overflow-hidden"
+      style="right: var(--w)"
+    >
+      <div
+        class="sl absolute inset-0 bg kb"
+        data-k="cover"
+        style="opacity: 1"
+      ></div>
+      <div
+        class="sl absolute inset-0 bg kb"
+        data-k="date"
+        style="opacity: 0"
+      ></div>
+      <div
+        class="sl absolute inset-0 bg kb"
+        data-k="quote"
+        style="opacity: 0"
+      ></div>
+      <div
+        class="sl absolute inset-0 bg kb"
+        data-k="foot"
+        style="opacity: 0"
+      ></div>
+      <div class="absolute bottom-16 left-14 text-white">
+        <p class="tracking-[.35em] text-xs">THE WEDDING OF</p>
+        <h2 data-names class="font-serif text-6xl xl:text-7xl my-4"></h2>
+        <p id="sideDate" class="tracking-[.15em] text-sm"></p>
+      </div>
+    </aside>
+    <audio id="bgm" loop preload="auto"></audio>
+    <button
+      id="mb"
+      class="hidden fixed top-5 right-4 z-40 w-11 h-11 rounded-full bg-white/80 backdrop-blur-md border border-ac/40 text-ink-700 text-lg shadow-lg grid place-items-center"
+      aria-label="Musik"
+    ></button>
+    <main id="app"></main>
+    <nav
+      id="nav"
+      class="fixed bottom-0 left-1/2 -translate-x-1/2 z-40 hidden flex justify-around w-full lg:w-[var(--w)] rounded-t-2xl bg-cream-50/95 backdrop-blur-md border-t border-ac/20 px-1 pt-2 pb-[max(.5rem,env(safe-area-inset-bottom))] shadow-[0_-6px_24px_rgba(0,0,0,.10)]"
+    ></nav>
+    <div
+      id="lb"
+      class="fixed inset-0 z-[70] hidden place-items-center bg-cream-50/95 select-none"
+    >
+      <button
+        id="lbx"
+        class="absolute top-4 right-5 text-4xl text-ink-900 z-10"
+        aria-label="Tutup"
+      >
+        &times;
+      </button>
+      <button
+        id="lbp"
+        class="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-ink-900/10 text-ink-900 text-3xl leading-none hover:bg-ink-900/20 transition"
+        aria-label="Sebelumnya"
+      >
+        &#8249;
+      </button>
+      <button
+        id="lbn"
+        class="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-ink-900/10 text-ink-900 text-3xl leading-none hover:bg-ink-900/20 transition"
+        aria-label="Berikutnya"
+      >
+        &#8250;
+      </button>
+      <img
+        id="lbi"
+        class="max-h-[78vh] max-w-[88vw] rounded-2xl shadow-2xl transition-all duration-200"
+        alt=""
+      />
+      <div id="lbd" class="absolute bottom-6 flex gap-2"></div>
+    </div>
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/helpers.js"></script>
+    <script src="scripts/render.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/rsvp.js"></script>
+    <script src="scripts/gallery.js"></script>
+    <script src="scripts/slider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="scripts/animations.js"></script>
+    <script src="scripts/gift.js"></script>
+  </body>
+</html>
