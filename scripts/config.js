@@ -1,6 +1,6 @@
 /* Data undangan (nama, tanggal, acara, rekening, galeri, cerita) — edit di file ini. */
 /* ============ DATA — edit di sini ============ */
-// Foto dummy pernikahan dari Unsplash (lisensi bebas pakai). Ganti dengan foto kostumer saat pesanan asli.
+// Semua foto memakai file lokal di folder img/ (foto kostumer).
 const U = (id, w, h) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=75&w=${w}&h=${h}`;
 // Kosongkan ("" / []) bagian opsional bila tidak dipakai: live, giftAddress, gifts, story.
@@ -15,10 +15,7 @@ const C = {
     role: "Putri", // Putri / Putri pertama / Putri kedua ...
     address: "Jl. Melati No. 10 RT 01 RW 02, Kec. Contoh, Kota Contoh",
     // 2 foto = carousel otomatis (bergeser ke kanan). Isi 1 foto saja bila tidak ingin carousel.
-    photos: [
-      U("1565038930214-09566ed2149b", 900, 1200),
-      U("1607357910286-1ff94ac13c24", 900, 1200),
-    ],
+    photos: ["img/bride1.jpg", "img/bride2.jpg"],
   },
   groom: {
     full: "Raka Pratama Wijaya",
@@ -30,10 +27,7 @@ const C = {
     role: "Putra",
     address: "Jl. Kenanga No. 25 RT 03 RW 04, Kec. Contoh, Kota Contoh",
     // 2 foto = carousel otomatis (bergeser ke kiri).
-    photos: [
-      U("1545396047-0fd21ce522ba", 900, 1200),
-      U("1596457221755-b96bc3a6df18", 900, 1200),
-    ],
+    photos: ["img/groom1.jpg", "img/groom2.jpg"],
   },
   date: "2028-12-12T07:30:00", // tanggal & jam mulai acara (Sabtu, 12 Desember 2026)
   // Identitas & teks undangan
@@ -57,33 +51,23 @@ const C = {
       "Merupakan sebuah kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu. Terima kasih.",
   },
   // URL Web App Google Apps Script (berakhiran /exec) untuk RSVP & ucapan. Kosongkan = disimpan di browser saja (hanya untuk uji coba)
-  rsvp: "",
+  rsvp: "https://script.google.com/macros/s/AKfycbxVkihOSPwomaeVq1pex5KlUNAsYgXa2RB_c3wGJzQ7vsHzuRF5-Q1Mh4ny_BuM2F1gbw/exec",
   // 3 foto slide otomatis di bagian atas (setelah tombol Buka Undangan diklik), bergeser ke kanan. Disarankan portrait 2:3. Isi 1 foto = diam.
-  hero: [
-    U("1519741497674-611481863552", 900, 1350),
-    U("1565038930214-09566ed2149b", 900, 1350),
-    U("1545396047-0fd21ce522ba", 900, 1350),
-  ],
+  hero: ["img/hero1.jpg", "img/hero2.jpg", "img/hero3.jpg"],
   // 2 foto slide ke kanan otomatis sebagai latar footer (rasio bebas, landscape/portrait). Kosongkan [] = pakai bg.foot & bg.quote.
-  footPhotos: [
-    U("1502955422409-06e43fd3eff3", 1200, 1200),
-    U("1517456215183-9a2c3a748d0c", 1200, 1200),
-  ],
+  footPhotos: ["img/foot1.jpg", "img/foot2.jpg"],
   // foto latar tiap bagian
   bg: {
-    cover: U("1519741497674-611481863552", 1200, 900),
-    quote: U("1517456215183-9a2c3a748d0c", 1200, 900),
-    foot: U("1502955422409-06e43fd3eff3", 1200, 900),
-    date: U("1556302482-70b6e670e6b7", 1200, 900),
+    cover: "img/akad1.jpg",
+    quote: "img/live1.jpg",
+    foot: "img/live2.jpg",
+    date: "img/resepsi2.jpg",
   },
   events: [
     {
       t: "Akad Nikah",
       // photos: 2 foto = carousel otomatis; date (opsional) = tanggal khusus acara ini, kosong = tanggal utama
-      photos: [
-        U("1646325311277-0c35409fdd57", 1200, 800),
-        U("1607357910286-1ff94ac13c24", 1200, 800),
-      ],
+      photos: ["img/akad1.jpg", "img/akad2.jpg"],
       time: "07.30 - 09.00 WIB",
       place: "Gedung Serbaguna Mawar",
       addr: "Jl. Contoh Raya No. 123, Kec. Contoh, Kota Contoh, Provinsi Contoh 12345",
@@ -91,10 +75,7 @@ const C = {
     },
     {
       t: "Resepsi",
-      photos: [
-        U("1537633468298-d86f0c2d4173", 1200, 800),
-        U("1695266392136-1805eef542ac", 1200, 800),
-      ],
+      photos: ["img/resepsi1.jpg", "img/resepsi2.jpg"],
       time: "10.00 - 15.00 WIB",
       place: "Gedung Serbaguna Mawar",
       addr: "Jl. Contoh Raya No. 123, Kec. Contoh, Kota Contoh, Provinsi Contoh 12345",
@@ -105,12 +86,10 @@ const C = {
   live: {
     platform: "YouTube",
     url: "https://www.youtube.com/@nadia-raka/live",
-    photos: [
-      U("1519741497674-611481863552", 1200, 750),
-      U("1565038930214-09566ed2149b", 1200, 750),
-    ],
+    photos: ["img/live1.jpg", "img/live2.jpg"],
   },
-  music: "sound/golden hour.mp3", // lagu latar: taruh file mp3 di folder sound/
+  falling: true, // efek daun maroon berjatuhan; false = matikan
+  music: "sound/PUJANINGSING.mp3", // lagu latar: taruh file mp3 di folder sound/
   // alamat pengiriman kado (kosongkan {} jika tidak dipakai)
   giftAddress: {
     name: "Nadia",
@@ -125,24 +104,18 @@ const C = {
     title: "Video Prewedding",
   },
   gallery: [
-    U("1607357910286-1ff94ac13c24", 800, 1100),
-    U("1596457221755-b96bc3a6df18", 800, 1100),
-    U("1624067056935-593eb6595294", 800, 1100),
-    U("1535185384036-28bbc8035f28", 800, 1100),
-    U("1556499696-0ba753b9ad02", 800, 1100),
-    U("1684244276932-6ae853774c4d", 800, 1100),
+    "img/gallery1.jpg",
+    "img/gallery2.jpg",
+    "img/gallery3.jpg",
+    "img/gallery4.jpg",
+    "img/gallery5.jpg",
+    "img/gallery6.jpg",
   ],
   // 2 foto slide atas-bawah otomatis di bagian RSVP (rasio 4:3). Kosongkan [] = pakai 2 foto pertama galeri.
-  rsvpPhotos: [
-    U("1519741497674-611481863552", 1200, 900),
-    U("1565038930214-09566ed2149b", 1200, 900),
-  ],
+  rsvpPhotos: ["img/rsvp1.jpg", "img/rsvp2.jpg"],
   // cerita (kosongkan [] jika tidak dipakai)
   // 2 foto cerita (carousel otomatis bergeser ke bawah)
-  storyPhotos: [
-    U("1519741497674-611481863552", 1200, 800),
-    U("1517456215183-9a2c3a748d0c", 1200, 800),
-  ],
+  storyPhotos: ["img/story1.jpg", "img/story2.jpg"],
   // contoh isi (hapus tanda // di depan, lalu isi dengan cerita asli):
   // story: [
   //   { d: "09 September 2016", t: "Awal Bertemu", p: "Tulis cerita singkat di sini." },
